@@ -1,0 +1,12 @@
+﻿<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/logviewer.js"></script>
+
+<div ng-app="logViewer" ng-controller="logViewerController">
+
+    <h2>{{greeting}}</h2>
+    
+    <input type="text" ng-model="data" placeholder="Add data"/>
+    <input type="button" ng-click="setData()" value="Set"/>
+
+</div>
+
