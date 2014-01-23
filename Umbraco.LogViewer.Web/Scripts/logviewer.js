@@ -3,36 +3,40 @@
 
     var logViewer;
 
-    function LogViewerController($http, $scope) {
-        function listen() {
-            $http({ method: 'GET', url: '/LogViewer/LogEntries', timeout: 5000 })
-                .success(function (data, status, headers, config) {
-                    $scope.greeting = data.data;
-                    listen();
-                })
-                .error(function (data, status, headers, config) {
-                    if (status === 0) {
-                        listen();
-                        return;
-                    }
+    function LogViewerController(logViewerService, $scope) {
+        $scope.messages = ["test", "tast"];
 
-                    $scope.greeting = "error";
-                });
-        }
+        logViewerService.logged = function(data) {
+            $scope.$apply(function() {
+                $scope.messages.push(data);
+            });
+        };
+    }
 
-        $scope.data = "test";
+    function LogViewerService() {
+        var appender = $.connection("/signalrappender"),
+            isConnected = false,
+            self = this;
 
-        $scope.setData = function() {
-            $http({ method: 'POST', url: '/LogViewer/Set', data: { data: $scope.data } });
-            $scope.data = "";
+        this.send = function(data) {
+            appender.send(data);
         };
 
-        listen();
+        appender.received(function(data) {
+            if (self.logged) {
+                self.logged(data);
+            }
+        });
+
+        appender.start().done(function() {
+            isConnected = true;
+        });
     }
 
     function main() {
         logViewer = angular.module("logViewer", []);
-        logViewer.controller("logViewerController", ["$http", "$scope", LogViewerController]);
+        logViewer.controller("logViewerController", ["logViewerService", "$scope", LogViewerController]);
+        logViewer.service("logViewerService", [LogViewerService]);
     }
 
     main();

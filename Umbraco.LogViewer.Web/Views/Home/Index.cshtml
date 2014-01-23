@@ -2,4 +2,21 @@
     ViewBag.Title = "LogViewer";
 }
 
-@Html.Partial("~/Views/LogViewer/LogViewer.cshtml")
+<div ng-app="logViewer">
+
+    @Html.Partial("~/Views/LogViewer/LogViewer.cshtml")
+
+    <div ng-controller="testController">
+        {{test}}
+        <input type="button" value="Add message" ng-click="add()" />
+    </div>
+
+</div>
+@section scripts
+{
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.0.1.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/logviewer.js"></script>
+    <script src="~/Scripts/testapp.js"></script>
+}
