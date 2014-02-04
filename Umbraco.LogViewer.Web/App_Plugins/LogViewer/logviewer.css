@@ -1,0 +1,31 @@
+﻿.log-container {
+    position: relative;
+    padding-top: 10px;
+    overflow: hidden;
+}
+
+.log-tab-view {
+    position: absolute;
+    top: 52px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.autoScroll {
+    float: right;
+}
+
+.level.error {
+    color: red;
+}
+
+.level.debug {
+    color: teal;
+}
+
+.level.info {
+    color: green;
+}

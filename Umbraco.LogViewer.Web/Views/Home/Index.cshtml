@@ -1,13 +1,13 @@
 ﻿@{
     ViewBag.Title = "LogViewer";
 }
-
+<link href="~/App_Plugins/LogViewer/logviewer.css" rel="stylesheet" />
 <div ng-app="logViewer">
 
-    @Html.Partial("~/Views/LogViewer/LogViewer.cshtml")
+    @Html.Partial("~/App_Plugins/LogViewer/LogViewer.cshtml")
 
     <div ng-controller="testController">
-        {{test}}
+        <select ng-model="level" ng-options="l for l in levels"></select>
         <input type="button" value="Add message" ng-click="add()" />
     </div>
 
@@ -16,7 +16,7 @@
 {
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.0.1.min.js"></script>
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/logviewer.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/App_Plugins/LogViewer/logviewer.js"></script>
     <script src="~/Scripts/testapp.js"></script>
 }

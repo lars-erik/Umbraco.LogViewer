@@ -19,7 +19,17 @@ namespace Umbraco.LogViewer
             {
                 Layout.Format(writer, loggingEvent);
             }
-            SignalRAppenderConnection.Broadcast(builder.ToString());
+
+            var logDto = new LogDto
+            {
+                TimeStamp = loggingEvent.TimeStamp.ToString("G"),
+                Thread = loggingEvent.ThreadName,
+                Level = loggingEvent.Level.DisplayName,
+                Logger = loggingEvent.LoggerName,
+                Message = loggingEvent.RenderedMessage,
+            };
+
+            SignalRAppenderConnection.Broadcast(logDto);
         }
     }
 }

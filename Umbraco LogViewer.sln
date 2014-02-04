@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbraco.LogViewer.Web", "Um
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbraco.LogViewer", "Umbraco.LogViewer\Umbraco.LogViewer.csproj", "{7E896EB4-841C-4847-BEF8-E9ECA35D57AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbraco.LogViewer.Tests", "Umbraco.LogViewer.Tests\Umbraco.LogViewer.Tests.csproj", "{6DF543A1-4B62-401A-B68E-784D6DDAE981}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbraco.LogViewer.Integrated", "Umbraco.LogViewer.Integrated\Umbraco.LogViewer.Integrated.csproj", "{A102F410-8C6F-419C-8A2D-B20D5B78DA8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{7E896EB4-841C-4847-BEF8-E9ECA35D57AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E896EB4-841C-4847-BEF8-E9ECA35D57AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E896EB4-841C-4847-BEF8-E9ECA35D57AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DF543A1-4B62-401A-B68E-784D6DDAE981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DF543A1-4B62-401A-B68E-784D6DDAE981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DF543A1-4B62-401A-B68E-784D6DDAE981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DF543A1-4B62-401A-B68E-784D6DDAE981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A102F410-8C6F-419C-8A2D-B20D5B78DA8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A102F410-8C6F-419C-8A2D-B20D5B78DA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A102F410-8C6F-419C-8A2D-B20D5B78DA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A102F410-8C6F-419C-8A2D-B20D5B78DA8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
