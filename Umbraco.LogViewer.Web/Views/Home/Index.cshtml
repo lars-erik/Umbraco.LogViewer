@@ -4,7 +4,7 @@
 <link href="~/App_Plugins/LogViewer/logviewer.css" rel="stylesheet" />
 <div ng-app="logViewer">
 
-    @Html.Partial("~/App_Plugins/LogViewer/LogViewer.cshtml")
+    <div ng-include="'/App_Plugins/LogViewer/logviewer.html'"></div>
 
     <div ng-controller="testController">
         <select ng-model="level" ng-options="l for l in levels"></select>
@@ -15,8 +15,8 @@
 @section scripts
 {
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/jquery.signalR-2.0.1.min.js"></script>
     <script src="~/Scripts/angular.js"></script>
+    <script src="~/App_Plugins/LogViewer/jquery.signalR-1.2.0.min.js"></script>
     <script src="~/App_Plugins/LogViewer/logviewer.js"></script>
     <script src="~/Scripts/testapp.js"></script>
 }

@@ -1,9 +1,10 @@
-﻿(function() {
+﻿var Umbraco = Umbraco || null;
+(function () {
     "use strict";
 
     var logViewer;
 
-    function LogViewerController(logViewerService, $scope, $http) {
+    function LogViewerController(logViewerService, $scope, $http, urls) {
         var loading = [{ id: 0, line: "Loading..." }];
 
         function nada() {
@@ -11,7 +12,7 @@
 
         function loadLog() {
             $scope.filelog = loading;
-            $http.get("/api/filelog")
+            $http.get(urls.filelog)
                 .success(function (result) {
                     $scope.filelog = $.map(result.data.split("\n"), function(e, i) {
                         return { id: i, line: e };
@@ -65,8 +66,8 @@
         };
     }
 
-    function LogViewerService() {
-        var appender = $.connection("/signalrappender"),
+    function LogViewerService(urls) {
+        var appender = $.connection(urls.connection),
             isConnected = false,
             self = this;
 
@@ -86,9 +87,22 @@
     }
 
     function main() {
-        logViewer = angular.module("logViewer", []);
-        logViewer.controller("logViewerController", ["logViewerService", "$scope", "$http", LogViewerController]);
-        logViewer.service("logViewerService", [LogViewerService]);
+        logViewer = angular.module("umbraco");
+        logViewer.factory("logViewer.urls", function () {
+            return {
+                connection: (Umbraco ? Umbraco.Sys.ServerVariables.umbracoSettings.appPluginsPath : "/App_Plugins") + "/LogViewer/signalrappender",
+                filelog: (Umbraco ? Umbraco.Sys.ServerVariables.umbracoSettings.umbracoPath : "") + "/api/FileLog/Get",
+                logviewerurl: (Umbraco ? Umbraco.Sys.ServerVariables.umbracoSettings.appPluginsPath : "/App_Plugins") + "/LogViewer/logviewer.html"
+            };
+        });
+        logViewer.controller("logViewer.AppController", [
+            "$scope", "logViewer.urls", "assetsService", function (scope, urls, assetsService) {
+                scope.logviewerurl = urls.logviewerurl;
+                assetsService.loadCss(Umbraco.Sys.ServerVariables.umbracoSettings.appPluginsPath + "/LogViewer/logviewer.css");
+            }
+        ]);
+        logViewer.controller("logViewer.Controller", ["logViewer.Service", "$scope", "$http", "logViewer.urls", LogViewerController]);
+        logViewer.service("logViewer.Service", ["logViewer.urls", LogViewerService]);
         logViewer.directive("logFillscreen", [
             function() {
                 function resize(element) {

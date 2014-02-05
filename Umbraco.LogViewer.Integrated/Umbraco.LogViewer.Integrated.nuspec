@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Umbraco.LogViewer</id>
+    <version>$version$</version>
+    <title>Umbraco Log Viewer</title>
+    <authors>Lars-Erik Aabech</authors>
+    <owners>Lars-Erik Aabech</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SignalR appender and live / file log viewer</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2014 Lars-Erik Aabech / MarkedsPartner AS</copyright>
+    <tags>umbraco logs</tags>
+  </metadata>
+  <files>
+    <file src="..\Umbraco.LogViewer.Web\App_Plugins\LogViewer\*.*" target="content\App_Plugins\LogViewer"/>
+    <file src="..\Umbraco.LogViewer.Web\config\*.xdt" target="content\config"/>
+  </files>
+</package>

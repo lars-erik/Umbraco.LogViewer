@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR;
+/*
 using Microsoft.Owin;
 using Owin;
 
@@ -13,3 +14,4 @@ namespace Umbraco.LogViewer
         }
     }
 }
+*/

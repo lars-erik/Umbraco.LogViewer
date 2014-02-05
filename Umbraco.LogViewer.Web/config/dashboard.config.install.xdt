@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dashBoard xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <section alias="StartupDeveloperDashboardSection" xdt:Locator="Match(alias)">
+    <tab caption="Log Viewer" xdt:Transform="Insert">
+      <control addPanel="true" panelCaption="">
+        ../App_Plugins/LogViewer/LogViewerDashboard.html
+      </control>
+    </tab>
+  </section>
+</dashBoard>
