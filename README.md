@@ -10,6 +10,6 @@ log4net-mediumtrust nuget package can be found in https://github.com/umbraco/Umb
 
 Build and do 
 
-    nuget pack Umbraco.LogViewer.Integration -includereferencedprojects
+    nuget pack .\Umbraco.LogViewer.Integration\Umbraco.LogViewer.Integration.csproj -includereferencedprojects
 
 to get a nuget package
