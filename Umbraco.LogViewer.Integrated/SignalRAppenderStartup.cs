@@ -1,15 +1,14 @@
-﻿using System.Web.Routing;
-using Umbraco.Core;
+﻿//using Microsoft.Owin;
+//using Owin;
 
-namespace Umbraco.LogViewer.Integrated
-{
-    public class SignalRAppenderStartup : ApplicationEventHandler
-    {
-        protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
-        {
-            base.ApplicationStarted(umbracoApplication, applicationContext);
-
-            RouteTable.Routes.MapConnection<SignalRAppenderConnection>("signalrappender", "/App_Plugins/LogViewer/signalrappender");
-        }
-    }
-}
+//[assembly: OwinStartup(typeof(Umbraco.LogViewer.Integrated.Startup))]
+//namespace Umbraco.LogViewer.Integrated
+//{
+//    public class Startup
+//    {
+//        public void Configuration(IAppBuilder app)
+//        {
+//            app.MapSignalR<SignalRAppenderConnection>("signalrappender");
+//        }
+//    }
+//}

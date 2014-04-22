@@ -8,7 +8,7 @@
     <owners>Lars-Erik Aabech</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>SignalR appender and live / file log viewer</description>
-    <releaseNotes></releaseNotes>
+    <releaseNotes>NB! Built for Umbraco 7.1.1</releaseNotes>
     <copyright>Copyright 2014 Lars-Erik Aabech / MarkedsPartner AS</copyright>
     <tags>umbraco logs</tags>
   </metadata>

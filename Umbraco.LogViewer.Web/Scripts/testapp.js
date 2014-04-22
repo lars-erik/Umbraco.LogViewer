@@ -1,6 +1,6 @@
 ﻿(function() {
-    var module = angular.module("logViewer");
-    module.controller("testController", ["logViewerService",
+    var module = angular.module("umbraco", []);
+    module.controller("testController", ["logViewer.Service",
         "$scope", function (logViewerService, scope) {
             scope.add = function() {
                 logViewerService.send({

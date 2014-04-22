@@ -1,4 +1,12 @@
-﻿.log-container {
+﻿.log-panel {
+    margin-top: -30px;
+}
+
+.log-panel .nav {
+    margin-bottom: 0;
+}
+
+.log-container {
     position: relative;
     padding-top: 10px;
     overflow: hidden;
@@ -6,7 +14,7 @@
 
 .log-tab-view {
     position: absolute;
-    top: 52px;
+    top: 40px;
     left: 0;
     bottom: 0;
     right: 0;
@@ -16,6 +24,10 @@
 
 .autoScroll {
     float: right;
+}
+
+.autoScroll label {
+    display: inline-block;
 }
 
 .level.error {

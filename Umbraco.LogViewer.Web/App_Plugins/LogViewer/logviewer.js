@@ -14,11 +14,11 @@
             $scope.filelog = loading;
             $http.get(urls.filelog)
                 .success(function (result) {
-                    $scope.filelog = $.map(result.data.split("\n"), function(e, i) {
+                    $scope.filelog = $.map(result.data.split("\n"), function (e, i) {
                         return { id: i, line: e };
                     });
                 })
-                .error(function() {
+                .error(function () {
                     $scope.filelog = [{ id: 0, line: "crap" }];
                 });
         }
@@ -34,7 +34,7 @@
         $scope.filelog = loading;
         $scope.autoScroll = true;
 
-        $scope.$watch(function() {
+        $scope.$watch(function () {
             return $scope.tab;
         }, function (newValue, oldValue) {
             oldValue.class = "";
@@ -43,12 +43,12 @@
             $scope.showFile = $scope.tab === $scope.tabs[1];
         });
 
-        $scope.navigate = function(tab) {
+        $scope.navigate = function (tab) {
             $scope.tab = tab;
             tab.activate();
         };
 
-        $scope.findLevel = function(line) {
+        $scope.findLevel = function (line) {
             if (line.line.indexOf(" INFO ") > -1) {
                 return "info";
             } else if (line.line.indexOf("DEBUG") > -1) {
@@ -59,8 +59,8 @@
             return "";
         };
 
-        logViewerService.logged = function(data) {
-            $scope.$apply(function() {
+        logViewerService.logged = function (data) {
+            $scope.$apply(function () {
                 $scope.messages.push(data);
             });
         };
@@ -71,17 +71,17 @@
             isConnected = false,
             self = this;
 
-        this.send = function(data) {
+        this.send = function (data) {
             appender.send(JSON.stringify(data));
         };
 
-        appender.received(function(data) {
+        appender.received(function (data) {
             if (self.logged) {
                 self.logged(data);
             }
         });
 
-        appender.start().done(function() {
+        appender.start().done(function () {
             isConnected = true;
         });
     }
@@ -104,7 +104,7 @@
         logViewer.controller("logViewer.Controller", ["logViewer.Service", "$scope", "$http", "logViewer.urls", LogViewerController]);
         logViewer.service("logViewer.Service", ["logViewer.urls", LogViewerService]);
         logViewer.directive("logFillscreen", [
-            function() {
+            function () {
                 function resize(element) {
                     var availHeight = $(window).height() - element.offset().top,
                         height = availHeight - 10;
@@ -113,7 +113,8 @@
 
                 return function (scope, element, attrs) {
                     resize(element);
-                    $(window).resize(function() { resize(element); });
+                    $(window).resize(function () { resize(element); });
+                    $('a[data-toggle="tab"]').on('shown', function () { resize(element); })
                 };
             }
         ]);
@@ -147,18 +148,18 @@
                         b: parseInt(frame * (oriCol.b))
                     };
                     element.css("background-color", "rgb(" + newVal.r + ", " + newVal.g + ", " + newVal.b + ")");
-                    setTimeout(function() {
+                    setTimeout(function () {
                         blink(element, orig, started, false);
-                    }, 1000/24);
+                    }, 1000 / 24);
                 }
 
-                return function(scope, element, attrs) {
+                return function (scope, element, attrs) {
                     var orig = element.css("background-color"),
                         autoscroll;
 
-                    scope.$watch(function() {
+                    scope.$watch(function () {
                         return scope.$eval(attrs.ngModel).length;
-                    }, function(newVal) {
+                    }, function (newVal) {
                         if (autoscroll) {
                             element.scrollTop(element.prop("scrollHeight"));
                         } else if (newVal > 0) {
@@ -170,7 +171,7 @@
 
                     scope.$watch(function () {
                         return scope.$eval(attrs.logAutoscroll);
-                    }, function(newValue) {
+                    }, function (newValue) {
                         autoscroll = newValue;
                     });
                 };

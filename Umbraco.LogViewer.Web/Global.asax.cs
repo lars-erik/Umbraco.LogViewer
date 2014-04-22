@@ -18,7 +18,6 @@ namespace Umbraco.LogViewer.Web
             log4net.Config.XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/config/log4net.config")));
 
 
-            RouteTable.Routes.MapConnection<SignalRAppenderConnection>("signalrappender", "/App_Plugins/LogViewer/signalrappender");
             GlobalConfiguration.Configuration.Routes.MapHttpRoute(
                 name: "api",
                 routeTemplate: "api/{controller}/{id}",
