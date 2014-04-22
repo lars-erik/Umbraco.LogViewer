@@ -170,3 +170,4 @@ install/
 masterpages/
 uSync.Archive/
 packages/
+*.nupkg
